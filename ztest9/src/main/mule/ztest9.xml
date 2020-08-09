@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="584407c6-fd98-4d8b-8c78-d5426fe0ccc1" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="ztest9Flow" doc:id="dad67000-5d25-4455-be5a-93c80aa2e9b9" >
+		<http:listener doc:name="Listener" doc:id="833b3200-4957-4ba9-b0c1-714da824fd5c" config-ref="HTTP_Listener_config" path="/git"/>
+		<set-payload value='#["Git Repository first flow default payload"]' doc:name="Set Payload" doc:id="36c1cd1b-9066-4223-b4cf-d05d2b00aa6e" />
+		<logger level="INFO" doc:name="Logger" doc:id="2e6aa296-0991-464d-a0ea-9f531944c518" message="#[payload]"/>
+	</flow>
+</mule>
